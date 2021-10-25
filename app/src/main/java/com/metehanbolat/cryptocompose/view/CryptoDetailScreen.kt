@@ -28,9 +28,12 @@ import kotlinx.coroutines.launch
 @Composable
 fun CryptoDetailScreen(id: String, price: String, navController: NavController, viewModel : CryptoDetailViewModel = hiltViewModel()){
 
-    val cryptoItem = remember { mutableStateOf<Resource<Crypto>>(Resource.Loading()) }
+    //val cryptoItem = remember { mutableStateOf<Resource<Crypto>>(Resource.Loading()) }
+    //LaunchedEffect(key1 = Unit){ cryptoItem.value = viewModel.getCrypto(id) }
 
-    LaunchedEffect(key1 = Unit){ cryptoItem.value = viewModel.getCrypto(id) }
+    val cryptoItem = produceState<Resource<Crypto>>(initialValue = Resource.Loading()){
+        value = viewModel.getCrypto(id)
+    }
 
     Box(
         modifier = Modifier

@@ -22,7 +22,6 @@ import coil.compose.rememberImagePainter
 import com.metehanbolat.cryptocompose.model.Crypto
 import com.metehanbolat.cryptocompose.util.Resource
 import com.metehanbolat.cryptocompose.viewmodel.CryptoDetailViewModel
-import kotlinx.coroutines.launch
 
 @ExperimentalCoilApi
 @Composable

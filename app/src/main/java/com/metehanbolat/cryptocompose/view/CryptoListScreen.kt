@@ -71,8 +71,8 @@ fun SearchBar(
     hint : String = "",
     onSearch : (String) -> Unit = {}
 ){
-    var text = remember { mutableStateOf("") }
-    var isHintDisplayed = remember { mutableStateOf(hint != "") }
+    val text = remember { mutableStateOf("") }
+    val isHintDisplayed = remember { mutableStateOf(hint != "") }
     
     Box(modifier = modifier){
         BasicTextField(

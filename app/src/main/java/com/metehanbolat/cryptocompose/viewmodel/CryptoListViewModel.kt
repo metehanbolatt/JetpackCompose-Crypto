@@ -56,10 +56,9 @@ class CryptoListViewModel @Inject constructor(
     fun loadCryptos(){
         viewModelScope.launch {
             isLoading.value = true
-            val result = repository.getCryptoList()
-            when(result){
+            when(val result = repository.getCryptoList()){
                 is Resource.Success -> {
-                    val cryptoItems = result.data!!.mapIndexed { index, cryptoListItem ->
+                    val cryptoItems = result.data!!.mapIndexed { _, cryptoListItem ->
                         CryptoListItem(cryptoListItem.currency, cryptoListItem.price)
                     }
                     errorMessage.value = ""
@@ -69,6 +68,9 @@ class CryptoListViewModel @Inject constructor(
                 is Resource.Error -> {
                     errorMessage.value = result.message!!
                     isLoading.value = false
+                }
+                is Resource.Loading -> {
+
                 }
 
             }
